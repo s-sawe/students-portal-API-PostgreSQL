@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query("SELECT s FROM Student s WHERE s.email = ?1 ") //the Student is the Student class
-    //In SQL the below code can be translated as SELECT * FROM student WHERE email = ?
+    //In SQL the below code above can be translated as SELECT * FROM student WHERE email = ?
     Optional<Student> findStudentByEmail(String email);
 
 }

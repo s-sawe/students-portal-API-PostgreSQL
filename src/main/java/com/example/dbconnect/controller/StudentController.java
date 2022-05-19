@@ -15,11 +15,13 @@ public class StudentController {
 
     @Autowired
     public StudentController(StudentService studentService) {
+
         this.studentService = studentService;
     }
 
     @GetMapping()
     public List<Student> getStudents() {
+
         return studentService.getStudents();
     }
 
@@ -30,8 +32,10 @@ public class StudentController {
 
     }
     @DeleteMapping(path = "{studentId}")
-    public void deleteStudent(@PathVariable("studentId") Long studentId){
+    public String deleteStudent(@PathVariable("studentId") Long studentId){
+
         studentService.deleteStudent(studentId);
+        return "Student De-Registration Sucessful!!";
     }
 
     @PutMapping(path = "{studentId}")

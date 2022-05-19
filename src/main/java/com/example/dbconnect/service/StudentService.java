@@ -49,10 +49,12 @@ public class StudentService {
                         "student with id" + studentId + "does not exist"
         ));
 
-        if (name != null && name.length() > 0 && !Objects.equals(student.getName(), name)){
-                    student.setName(name);
+        if (name != null && name.length() > 0 && !Objects.equals(student.getName(), name)){ //if the name is not null,
+            // and the length of the name is not equals to zero and the name supplied is not equal to the current one in the database
+                    student.setName(name); //then set the name to this
                 }
         if (email != null && email.length() > 0 && !Objects.equals(student.getEmail(), email)){
+            //below checks whether the email has been taken
             Optional<Student> studentOptional = studentRepository.findStudentByEmail(email);
             if (studentOptional.isPresent()){
                 throw new IllegalStateException("email taken");
