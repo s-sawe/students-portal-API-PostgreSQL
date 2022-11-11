@@ -1,2 +1,5 @@
-package com.example.dbconnect.entity;public class Payment {
+package com.example.dbconnect.entity;
+
+public class Payment {
+
 }

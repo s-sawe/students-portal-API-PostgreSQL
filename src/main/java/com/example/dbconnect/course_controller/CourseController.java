@@ -1,7 +1,6 @@
-package com.example.dbconnect.controller;
+package com.example.dbconnect.course_controller;
 
 import com.example.dbconnect.entity.Course;
-import com.example.dbconnect.entity.Student;
 import com.example.dbconnect.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +24,7 @@ public class CourseController {
         return "Course Added Sucessfully !!";
     }
     @GetMapping("/course/getAll")
-    public List<Course> getStudents() {
+    public List<Course> getCourses() {
 
         return courseService.getCourses();
     }

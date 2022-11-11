@@ -25,7 +25,7 @@ public class StudentController {
         return studentService.getStudents();
     }
 
-    @PostMapping
+    @PostMapping()
     public String registerNewStudent(@RequestBody Student student) {
         studentService.addNewStudent(student);
         return "Student Registration Successful !!";
@@ -35,7 +35,7 @@ public class StudentController {
     public String deleteStudent(@PathVariable("studentId") Long studentId){
 
         studentService.deleteStudent(studentId);
-        return "Student De-Registration Sucessful!!";
+        return "Student De-Registration Successful!!";
     }
 
     @PutMapping(path = "{studentId}")

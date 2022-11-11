@@ -1,11 +1,16 @@
 package com.example.dbconnect.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
+import java.util.Set;
 
 @Entity //to map data to database
 @Table
+//@RequestMapping("/students")
 public class Student {
 
     @Id
@@ -18,17 +23,28 @@ public class Student {
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
     )
-    private Long id;
+    //@Column(name = "student_id")
+    private int id;
     private String name;
     private String email;
     private LocalDate dob;
+
     @Transient
     private Integer age;
+
+    //@OneToMany(targetEntity =  Course.class, cascade  = CascadeType.ALL)
+    //@JoinColumn(name = "sc_fk", referencedColumnName = "id")
+    //private List<Course> courses;
+    //@JsonIgnore
+    @OneToMany
+    @JoinColumn(name="student_id")
+    private Set<Course> courses;
+
 
     public Student() {
     }
 
-    public Student(Long id,
+    public Student(int id,
                    String name,
                    String email,
                    LocalDate dob) {
@@ -46,12 +62,19 @@ public class Student {
         this.email = email;
         this.dob = dob;
     }
+    public Set<Course> getCourses() {
+        return courses;
+    }
 
-    public Long getId() {
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

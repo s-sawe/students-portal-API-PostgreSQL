@@ -16,9 +16,10 @@ public class StudentService {
     private final StudentRepository studentRepository;
     @Autowired
     public StudentService(StudentRepository studentRepository){
+
         this.studentRepository = studentRepository;
-    }
-    public List<Student> getStudents(){
+    }    public List<Student> getStudents(){
+
         return studentRepository.findAll();
     }
 
